@@ -51,10 +51,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 
-
-
 /* header */
-
 .header {
     position: fixed;
     top: 0;
@@ -66,104 +63,60 @@ html::-webkit-scrollbar-thumb {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 5%; /* Reduzi o padding para diminuir a altura do header */
+    padding: 1rem 5%;
+    width: 100%;
 }
 
 .header .logo {
     display: flex;
     align-items: center;
-    font-size: 2rem; /* Ajuste o tamanho da fonte conforme necessário */
+    font-size: 2rem;
     font-weight: bolder;
     color: var(--black);
 }
 
 .header .logo img.logo-img {
-    height: 60px; /* Ajuste a altura da logo conforme necessário */
-    margin-right: 0.8rem; /* Espaço entre o logo e o nome Plus */
+    height: 60px;
+    margin-right: 0.8rem;
 }
 
 @media (max-width: 768px) {
     .header .logo img.logo-img {
-        height: 60px; /* Ajuste a altura da logo para dispositivos menores */
+        height: 50px; /* Ajuste a altura da logo */
     }
 }
 
-.header .logo i {
-    color: var(--primary-color);
-    padding-right: .5rem;
-}
-
 .header .navbar {
+    padding: 1.5rem;
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
 .header .navbar a {
-    font-size: 1.5rem; /* Ajuste o tamanho da fonte conforme necessário */
+    font-size: 1.5rem;
     color: var(--black);
-    padding: 0.5rem; /* Ajuste o padding para reduzir a altura dos links */
+    padding: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease; /* Efeito de transição suave */
 }
 
-.header .navbar a:hover {
-    color: var(--primary-color);
-}
-
-.header .navbar .hover-underline {
-    position: relative;
-    max-width: max-content;
-}
-
-.header .navbar .hover-underline::after {
-    content: '';
-    position: absolute;
-    left: 0; bottom: 0;
-    width: 100%;
-    height: .1rem;
-    background-color: var(--primary-color);
-    transform: scaleX(0.2);
-    opacity: 0;
-    transition: 500ms ease;
-}
-
-.header .navbar .hover-underline:is(:hover, :focus-visible)::after {
-    transform: scaleX(1);
-    opacity: 1;
+.header .navbar a:hover,
+.header .navbar a:focus {
+    color: var(--primary-color); /* Muda a cor ao passar o mouse */
+    transform: translateY(-2px); /* Levanta ligeiramente o item ao passar o mouse */
 }
 
 .header .icons {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .header .icons div {
-    font-size: 1.8rem; /* Ajuste o tamanho da fonte conforme necessário */
-    margin-left: 1.5rem; /* Ajuste o espaço entre ícones */
+    font-size: 1.8rem;
+    margin-left: 1.5rem;
     color: var(--black);
     cursor: pointer;
-}
-
-.header .icons div:hover {
-    color: var(--primary-color);
-}
-
-.header .icons .whatsapp-btn {
-    display: flex; /* Ensure the button is displayed correctly */
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem; /* Ajuste o tamanho da fonte do botão */
-    color: var(--black);
-    margin-left: 1.5rem; /* Ajuste o espaço entre o botão e os ícones */
-    cursor: pointer;
-    transition: color .2s linear;
-}
-
-.header .icons .whatsapp-btn:hover {
-    color: var(--primary-color);
-}
-
-.header .icons .whatsapp-btn i {
-    font-size: 1.8rem; /* Ajuste o tamanho do ícone do botão */
 }
 
 #menu-btn {
@@ -175,6 +128,7 @@ html::-webkit-scrollbar-thumb {
         position: fixed;
         top: 0;
         left: 0;
+        padding: 1.5rem;
         background: var(--white);
         width: 80%;
         height: 100vh;
@@ -192,31 +146,99 @@ html::-webkit-scrollbar-thumb {
     }
 
     .header .navbar a {
-        margin: 1.5rem 0; /* Ajuste a margem dos links no menu móvel */
-        font-size: 2rem; /* Ajuste o tamanho da fonte no menu móvel */
+        margin: 2.5rem 0;
+        font-size: 2rem;
     }
 
     .header .icons {
         position: absolute;
         right: 2rem;
-        top: 2rem;
+        top: 1rem;
     }
 
     .header .icons #menu-btn {
         display: inline-block;
     }
+}
 
-    .header .icons .whatsapp-btn {
-        display: none; /* Hide WhatsApp button on mobile menu */
+/* Media query para dispositivos entre 769px e 991px */
+@media (min-width: 769px) and (max-width: 991px) {
+    .header .navbar a {
+        font-size: 1.75rem; /* Ajuste o tamanho da fonte */
+        padding: 2rem; /* Ajuste o padding para um melhor layout */
+    }
+
+    .header .icons div {
+        font-size: 1.5rem; /* Ajuste o tamanho dos ícones */
     }
 }
 
+/* Media query para dispositivos pequenos (menos de 768px) */
 @media (max-width: 768px) {
-    .header .icons .whatsapp-btn {
-        display: none; /* Ensure WhatsApp button is hidden on smaller screens */
+    .header {
+        padding: 2.5rem 3%; /* Reduz o padding no mobile */
+        flex-wrap: nowrap; /* Evita que o conteúdo quebre a linha */
+    }
+
+    .header .icons {
+        position: absolute;
+        right: 2.5rem; /* Ajuste o posicionamento do ícone */
+        top: 50%;
+        transform: translateY(-50%); /* Centraliza verticalmente o ícone */
+    }
+
+    .header .logo {
+        flex-grow: 1; /* Garante que o logo ocupe o espaço restante */
+    }
+
+    .header .icons #menu-btn {
+        display: inline-block;
     }
 }
 
+/* Media query para telas muito pequenas (menos de 480px) */
+@media (max-width: 480px) {
+    .header {
+        padding: 1.5rem 2%; /* Ajuste o padding para dispositivos muito pequenos */
+    }
+
+    .header .navbar a {
+        font-size: 1.25rem; /* Reduz o tamanho da fonte */
+        padding: 1.5rem; /* Reduz o padding */
+    }
+
+    .header .logo {
+        font-size: 1.5rem; /* Reduz o tamanho da fonte do logo */
+    }
+
+    .header .logo img.logo-img {
+        height: 40px; /* Ajuste a altura da logo para dispositivos muito pequenos */
+    }
+
+    .header .icons div {
+        font-size: 1.2rem; /* Ajuste o tamanho dos ícones */
+    }
+}
+
+/* Media query específica para 390px de largura */
+@media (max-width: 390px) {
+    .header {
+        padding: 1rem 2%; /* Ajuste o padding para telas pequenas */
+    }
+
+    .header .logo {
+        font-size: 1.25rem; /* Reduz o tamanho da fonte do logo */
+    }
+
+    .header .navbar a {
+        font-size: 1.1rem; /* Reduz ainda mais o tamanho da fonte */
+        padding: 1rem; /* Reduz o padding dos links */
+    }
+
+    .header .icons div {
+        font-size: 1.2rem; /* Ajusta o tamanho dos ícones */
+    }
+}
 
 
 /* home section */
@@ -307,98 +329,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 
-/* Carrossel */
-.carousel-container {
-    position: relative;
-    width: 100%; /* Garante que o carrossel ocupe toda a largura disponível */
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px;
-    background-color: var(--white);
-    box-shadow: var(--box-shadow);
-    height: auto; /* Ajusta a altura conforme o conteúdo */
-}
 
-.gallery-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-.gallery {
-    display: flex;
-    transition: transform 0.5s ease;
-    width: 100%;
-    height: auto; /* Ajusta a altura automaticamente */
-}
-
-.item {
-    flex: 0 0 100%; /* Cada item ocupa 100% da largura do carrossel */
-    display: flex;
-    align-items: center; /* Alinha verticalmente */
-    justify-content: center; /* Alinha horizontalmente */
-    position: relative;
-}
-
-.item img {
-    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do item */
-    max-height: 100%; /* Garante que a imagem não ultrapasse a altura do item */
-    width: auto; /* Ajusta a largura conforme a altura */
-    height: auto; /* Ajusta a altura conforme a largura */
-    object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
-    display: block; /* Remove espaços abaixo da imagem */
-}
-
-/* Estilos dos botões de navegação */
-.control {
-    position: absolute;
-    top: 50%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: var(--white);
-    border: none;
-    font-size: 2rem;
-    padding: 0.5rem;
-    cursor: pointer;
-    border-radius: 50%;
-    z-index: 100;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.arrow-left {
-    left: 10px;
-}
-
-.arrow-right {
-    right: 10px;
-}
-
-.control:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-    transform: scale(1.1);
-}
-
-/* Ajustes responsivos */
-@media (max-width: 900px) {
-    .carousel-container {
-        height: auto; /* Ajusta a altura conforme o conteúdo */
-    }
-
-    .item img {
-        object-fit: contain; /* Garante que a imagem não seja cortada */
-    }
-}
-
-@media (max-width: 600px) {
-    .carousel-container {
-        height: auto; /* Ajusta a altura conforme o conteúdo */
-    }
-
-    .control {
-        font-size: 1.5rem;
-        padding: 0.4rem;
-    }
-}
 
 
 /* sobre */
