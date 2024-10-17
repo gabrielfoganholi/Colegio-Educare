@@ -303,7 +303,7 @@ html::-webkit-scrollbar-thumb {
     align-items: center;
     justify-content: center;
     /* Substitua "sua-imagem.jpg" pelo caminho da sua imagem */
-    background: url("./img/background.png") no-repeat center center/cover;
+    background: url("./img/background.jpg") no-repeat center center/cover;
 }
 
 
@@ -645,14 +645,14 @@ html::-webkit-scrollbar-thumb {
     display: flex;
     background-color: var(--white);
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
     align-items: center;
 }
 
 .maps .map-box {
     width: 100%;
     max-width: 800px; /* Ajuste conforme necessário */
-    border-radius: .5rem;
+    border-radius: .2rem;
     box-shadow: var(--box-shadow);
     overflow: hidden;
 }
@@ -794,66 +794,6 @@ html::-webkit-scrollbar-thumb {
 .whatsapp-btn:hover {
     background-color: #1ebc57;
     transform: scale(1.1);
-}
-
-.redes-sociais {
-    padding: 5rem 9%;
-    background: var(--white);
-    text-align: center;
-}
-
-.redes-sociais .heading {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 2rem;
-}
-
-.redes-sociais .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
-}
-
-.redes-sociais .social-icon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: var(--black);
-    text-decoration: none;
-    transition: color 0.3s, transform 0.3s;
-}
-
-.redes-sociais .social-icon i {
-    font-size: 3rem; /* Tamanho dos ícones */
-    margin-bottom: 0.5rem;
-}
-
-.redes-sociais .social-icon span {
-    font-size: 1.6rem;
-}
-
-.redes-sociais .social-icon:hover {
-    color: var(--primary-color);
-    transform: scale(1.1); /* Aumenta o ícone ao passar o mouse */
-}
-
-@media (max-width: 768px) {
-    .redes-sociais .heading {
-        font-size: 2rem; /* Ajusta o tamanho da fonte do heading em telas menores */
-    }
-
-    .redes-sociais .social-icons {
-        gap: 1rem; /* Reduz o espaço entre ícones em telas menores */
-    }
-
-    .redes-sociais .social-icon i {
-        font-size: 2.5rem; /* Ajusta o tamanho dos ícones em telas menores */
-    }
-
-    .redes-sociais .social-icon span {
-        font-size: 1.4rem; /* Ajusta o tamanho da fonte dos textos em telas menores */
-    }
 }
 
 
