@@ -66,31 +66,56 @@ html::-webkit-scrollbar-thumb {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 5%; /* Reduzi o padding para diminuir a altura do header */
+    padding: 1rem 5%; /* Aumentei o padding para garantir mais altura */
+    min-height: 80px; /* Adiciona uma altura mínima ao header */
+}
+
+.hover-underline {
+    position: relative;
+    color: #000;
+    transition: color 0.3s ease-in-out;
+}
+
+.hover-underline::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .header .logo {
     display: flex;
     align-items: center;
-    font-size: 2rem; /* Ajuste o tamanho da fonte conforme necessário */
+    font-size: 2rem;
     font-weight: bolder;
     color: var(--black);
 }
 
 .header .logo img.logo-img {
-    height: 60px; /* Ajuste a altura da logo conforme necessário */
-    margin-right: 0.8rem; /* Espaço entre o logo e o nome Plus */
+    height: 60px;
+    margin-right: 0.8rem;
 }
 
 @media (max-width: 768px) {
-    .header .logo img.logo-img {
-        height: 60px; /* Ajuste a altura da logo para dispositivos menores */
+    .header {
+        padding: 1rem 3%; /* Ajusta o padding em telas menores */
+        min-height: 70px; /* Reduz a altura mínima em telas menores */
     }
-}
 
-.header .logo i {
-    color: var(--primary-color);
-    padding-right: .5rem;
+    .header .logo img.logo-img {
+        height: 50px; /* Ajusta o tamanho da logo para telas menores */
+    }
 }
 
 .header .navbar {
@@ -100,35 +125,9 @@ html::-webkit-scrollbar-thumb {
 }
 
 .header .navbar a {
-    font-size: 1.5rem; /* Ajuste o tamanho da fonte conforme necessário */
+    font-size: 1.5rem;
     color: var(--black);
-    padding: 0.5rem; /* Ajuste o padding para reduzir a altura dos links */
-}
-
-.header .navbar a:hover {
-    color: var(--primary-color);
-}
-
-.header .navbar .hover-underline {
-    position: relative;
-    max-width: max-content;
-}
-
-.header .navbar .hover-underline::after {
-    content: '';
-    position: absolute;
-    left: 0; bottom: 0;
-    width: 100%;
-    height: .1rem;
-    background-color: var(--primary-color);
-    transform: scaleX(0.2);
-    opacity: 0;
-    transition: 500ms ease;
-}
-
-.header .navbar .hover-underline:is(:hover, :focus-visible)::after {
-    transform: scaleX(1);
-    opacity: 1;
+    padding: 0.5rem;
 }
 
 .header .icons {
@@ -137,37 +136,21 @@ html::-webkit-scrollbar-thumb {
 }
 
 .header .icons div {
-    font-size: 1.8rem; /* Ajuste o tamanho da fonte conforme necessário */
-    margin-left: 1.5rem; /* Ajuste o espaço entre ícones */
+    font-size: 1.8rem;
+    margin-left: 1.5rem;
     color: var(--black);
     cursor: pointer;
-}
-
-.header .icons div:hover {
-    color: var(--primary-color);
 }
 
 .header .icons .whatsapp-btn {
-    display: flex; /* Ensure the button is displayed correctly */
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem; /* Ajuste o tamanho da fonte do botão */
+    font-size: 1.8rem;
     color: var(--black);
-    margin-left: 1.5rem; /* Ajuste o espaço entre o botão e os ícones */
+    margin-left: 1.5rem;
     cursor: pointer;
     transition: color .2s linear;
-}
-
-.header .icons .whatsapp-btn:hover {
-    color: var(--primary-color);
-}
-
-.header .icons .whatsapp-btn i {
-    font-size: 1.8rem; /* Ajuste o tamanho do ícone do botão */
-}
-
-#menu-btn {
-    display: none;
 }
 
 @media (max-width: 991px) {
@@ -187,13 +170,18 @@ html::-webkit-scrollbar-thumb {
         transition: 500ms ease;
     }
 
+    #menu-btn {
+        display: block;
+        font-size: 2rem;
+    }
+
     .header .navbar.active {
         transform: translateX(0);
     }
 
     .header .navbar a {
-        margin: 1.5rem 0; /* Ajuste a margem dos links no menu móvel */
-        font-size: 2rem; /* Ajuste o tamanho da fonte no menu móvel */
+        margin: 1.5rem 0;
+        font-size: 2rem;
     }
 
     .header .icons {
@@ -207,15 +195,35 @@ html::-webkit-scrollbar-thumb {
     }
 
     .header .icons .whatsapp-btn {
-        display: none; /* Hide WhatsApp button on mobile menu */
+        display: none;
     }
 }
 
 @media (max-width: 768px) {
+    .header .navbar {
+        width: 100%;
+        height: auto;
+    }
+
+    .header .navbar a {
+        font-size: 1.2rem;
+        padding: 0.3rem;
+    }
+
+    .header .icons div {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+
+    .header .icons #menu-btn {
+        font-size: 1.5rem;
+    }
+
     .header .icons .whatsapp-btn {
-        display: none; /* Ensure WhatsApp button is hidden on smaller screens */
+        display: none;
     }
 }
+
 
 
 
